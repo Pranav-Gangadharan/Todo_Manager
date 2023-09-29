@@ -5,14 +5,14 @@ import TodoList from './components/TodoList';
 
 export default function App() {
 	const [todo, setTodo] = useState(() => {
-		let localStorageValue = localStorage.getItem('Items');
+		let localStorageValue = sessionStorage.getItem('Items');
 		if (localStorageValue === null) return [];
 
 		return JSON.parse(localStorageValue);
 	});
 
 	useEffect(() => {
-		localStorage.setItem('Items', JSON.stringify(todo));
+		sessionStorage.setItem('Items', JSON.stringify(todo));
 	}, [todo]);
 
 	function addTodo(title) {
